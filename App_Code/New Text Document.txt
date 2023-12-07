@@ -1,0 +1,3 @@
+insert into hrm1..JRLogin(comp_cd,locn_cd,emp_cd,dept_cd,present,userpass,start_date) 
+select a.comp_cd,a.locn_cd, a.emp_cd,a.dept_cd,a.present,'ytH84JBZHl2HnE88EoUgGrSLOcscJJJ3NTACtcVhFHk=' as userpass,convert(date,getdate()) from 
+(select comp_Cd,locn_cd, emp_cd,dept_cd,present from hrm1..lv_emp_mst where present='Y'union select comp_Cd,locn_cd, emp_cd,dept_cd,present from tacl_sal..hemployee where present='Y') as a where a.emp_cd not in(select emp_cd from hrm1..JRLogin)

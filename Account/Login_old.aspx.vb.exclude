@@ -1,0 +1,102 @@
+﻿
+Partial Class Account_Login
+    Inherits System.Web.UI.Page
+    'Shared objprp As New PRP_Hit_Counter()
+    Shared res As New QueryResponse(Of PRP_Hit_Counter)
+
+
+    'Protected Sub btnsignin_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles btnsignin.Load
+    '    'If Not IsPostBack Then
+    '    '    lblSts.Text = ""
+    '    '    txtusrnam.Focus()
+    '    '    Try
+    '    '        Dim obj As New Cls_Hit_counter()
+    '    '        Dim res As New QueryResponse(Of PRP_Hit_Counter)
+    '    '        res.responseObject = New PRP_Hit_Counter()
+    '    '        res = obj.View(res.responseObject)
+    '    '        lblhitcou.Text = res.responseObject.hit_cou
+    '    '        res.responseObject.hit_cou = Convert.ToInt64(lblhitcou.Text)
+    '    '        res = obj.Insert(res.responseObject)
+
+    '    '        If res.response = -1 Then
+    '    '            Throw New Exception(res.responseMsg)
+    '    '        End If
+
+
+    '    '    Catch ex As Exception
+    '    '        lblMessage.Text = ex.Message
+    '    '    End Try
+    '    'End If
+    'End Sub
+
+    'Protected Sub btnsignin_Click(ByVal sender As Object, ByVal e As System.EventArgs) Handles btnsignin.Click
+    '    Dim Result As Integer = 0
+    '    Dim hosturl As String = commonfunctions.GetWebsiteURL()
+    '    Try
+    '        Dim res As New QueryResponse(Of PRP_Indent_Log)
+    '        If txtusrnam.Text.Trim().Length = 0 Then
+    '            lblSts.Text = "Please Enter User Name"
+    '            lblSts.ForeColor = Drawing.Color.DarkRed
+    '            txtusrnam.Focus()
+    '        ElseIf txtusrpwd.Text.Trim().Length = 0 Then
+    '            lblSts.Text = "Please Enter Password"
+    '            lblSts.ForeColor = Drawing.Color.DarkRed
+    '            txtusrpwd.Focus()
+    '        Else
+    '            Dim strHostName As String = System.Net.Dns.GetHostName()
+    '            Dim clientIPAddress As String = System.Net.Dns.GetHostAddresses(strHostName).GetValue(0).ToString
+
+    '            txtusrnam.Text = UCase(txtusrnam.Text.Trim)
+    '            If txtusrnam.Text <> "R18238" Then
+    '                Dim obj As New Cls_Indent_log()
+    '                Dim objprplog As New PRP_Indent_Log()
+    '                objprplog.edatetime = DateTime.Now()
+    '                objprplog.emp_cd = txtusrnam.Text.Trim
+    '                objprplog.hostname = strHostName
+    '                res = obj.Insert(objprplog)
+
+    '                If res.response = -1 Then
+    '                    Throw New Exception(res.responseMsg)
+    '                End If
+
+    '                Dim clsusr1 As New CLS_User_Master()
+
+    '                Session("SPW") = ""
+    '                If txtusrpwd.Text.Trim = "Store#$786" Then
+    '                    Session("SPW") = "Store#$786"
+    '                    Result = 1
+    '                Else
+    '                    'Result = clsusr1.Check_User_Login(txtusrnam.Text, txtusrpwd.Text)
+    '                    Dim res1 As New QueryResponse(Of PRP_users)
+    '                    res1 = clsusr1.Check_User_Login(txtusrnam.Text, txtusrpwd.Text)
+    '                    If res1.responseObject.outres = -1 Then
+    '                        Throw New Exception(res.responseMsg)
+    '                    End If
+    '                    Result = res1.responseObject.outres
+    '                End If
+
+    '                If Result = 1 Then
+    '                    'this.session.
+    '                    Session("usrnam") = txtusrnam.Text.Trim
+    '                    FormsAuthentication.RedirectFromLoginPage(txtusrnam.Text, True)
+    '                    Response.Redirect(String.Format("{0}Default.aspx", hosturl), False)
+
+    '                ElseIf Result = -2 Then
+    '                    lblSts.Text = "Password is Wrong"
+    '                    lblSts.ForeColor = System.Drawing.Color.Red
+    '                ElseIf Result = 8 Then
+    '                    lblSts.Text = "You are not Authorized."
+    '                    lblSts.ForeColor = System.Drawing.Color.Red
+    '                Else
+    '                    Response.Redirect("login.aspx", True)
+    '                End If
+
+    '            End If
+    '        End If
+
+    '    Catch ex As Exception
+    '        lblMessage.Text = ex.Message
+    '    End Try
+    'End Sub
+
+End Class
